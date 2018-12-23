@@ -7,7 +7,9 @@
     <body class="mdl-base">
         <div class="mdl-layout__container"></div>
             <div class="mdl-layout mdl-js-layout mdl-color--grey-600">
+              {{ if and (isset .Site.Params "display_title") ( .Site.Params.display_title ) }}
                 {{ partial "header.html" . }}
+              {{ end }}
                 <main class="mdl-layout__content">
                     <div class="mdl-grid">
                         {{ range .Site.Data.links }}
