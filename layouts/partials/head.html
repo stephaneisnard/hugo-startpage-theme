@@ -5,3 +5,6 @@
 <link rel="stylesheet" href="{{ "css/font-roboto.min.css" | absURL }}">
 <link rel="stylesheet" href="{{ "css/styles.min.css" | absURL }}" />
 <link rel="stylesheet" href="{{ "css/material.blue_grey-cyan.min.css" | absURL }}">
+{{ if and (isset .Site.Params "background_image") ( .Site.Params.background_image ) }}
+  <link rel="stylesheet" href="{{ "css/bg.css" | absURL }}" />
+{{ end }}
