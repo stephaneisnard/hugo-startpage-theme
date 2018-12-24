@@ -22,11 +22,9 @@
                               {{ range .elements }}
                                 {{ if and (isset . "type") (eq .type "link") }}
                                    <a href="{{ .data }}" class="link mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">{{ .title }}</a>
-                                {{ end }}
-                                {{ if and (isset . "type") (eq .type "email") }}
+                                {{ else if and (isset . "type") (eq .type "email") }}
                                    <a href="mailto:{{ .data }}" class="link mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">{{ .title }}</a>
-                                {{ end }}
-                                {{ if and (isset . "type") (eq .type "text") }}
+                                {{ else }}
                                    {{ .title }} {{ .data }}
                                 {{ end }}
                               {{ end }}
