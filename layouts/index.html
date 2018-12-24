@@ -13,7 +13,7 @@
                 <main class="mdl-layout__content">
                     <div class="mdl-grid">
                         {{ range .Site.Data.elements }}
-                        <div class="mdl-card mdl-card mdl-shadow--6dp mdl-color--grey-300 mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                        <div class="mdl-card mdl-card mdl-shadow--6dp mdl-color--grey-300 mdl-cell mdl-cell--{{ .size | default 2 }}-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
                             <div class="mdl-card__title mdl-color--{{ .colour | default "blue" }}">
                                 <h4 class="mdl-card__title-text mdl-color-text--grey-50">{{ .name }}</h4>
                             </div>
