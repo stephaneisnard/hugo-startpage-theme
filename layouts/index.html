@@ -12,16 +12,31 @@
               {{ end }}
                 <main class="mdl-layout__content">
                     <div class="mdl-grid">
-                        {{ range .Site.Data.links }}
-                        <div class="mdl-card mdl-card mdl-shadow--6dp mdl-color--grey-300 mdl-cell mdl-cell--2-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
+                        {{ range .Site.Data.elements }}
+                        <div class="mdl-card mdl-card mdl-shadow--6dp mdl-color--grey-300 mdl-cell mdl-cell--{{ .size | default 2 }}-col mdl-cell--4-col-tablet mdl-cell--8-col-phone">
                             <div class="mdl-card__title mdl-color--{{ .colour | default "blue" }}">
                                 <h4 class="mdl-card__title-text mdl-color-text--grey-50">{{ .name }}</h4>
                             </div>
                             {{ range .sections }}
                             <div class="mdl-card__actions mdl-card--border mdl-color-text--grey-900">
-                                {{ range .links }}
-                                <a href="{{ .url }}" class="link mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">{{ .title }}</a>
+                              {{ range .elements }}
+                                {{ if and (isset . "type") (eq .type "link") }}
+                                   <a href="{{ .data }}" class="link mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                     <img src="images/outline_link_black_18dp.png" />
+                                     {{ .title }}
+                                   </a>
+                                {{ else if and (isset . "type") (eq .type "email") }}
+                                   <a href="mailto:{{ .data }}" class="link mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                                     <img src="images/outline_email_black_18dp.png" />
+                                     {{ .title }}
+                                   </a>
+                                {{ else }}
+                                   <span class="mdl-list__item">
+                                     <img src="images/outline_view_headline_black_18dp.png" />
+                                     {{ .title }} {{ .data }}
+                                   </span>
                                 {{ end }}
+                              {{ end }}
                             </div>
                             {{ end }}
                         </div>
